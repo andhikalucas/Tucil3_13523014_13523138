@@ -141,43 +141,113 @@ public class Util {
 
     public static Board loadBoardFromFile(String path) {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String[] size = br.readLine().trim().split("\\s+");
-            int rows = Integer.parseInt(size[0]);
-            int cols = Integer.parseInt(size[1]);
+            
+            /* Edge case handling */
+            // Baca baris pertama: ukuran board
+            String checkSizeLine = br.readLine();
+            if (checkSizeLine == null)
+                throw new IllegalArgumentException("Format file tidak valid! File kosong.");
+            
+            String[] size = checkSizeLine.trim().split("\\s+");
+            if (size.length != 2)
+                throw new IllegalArgumentException("Format file tidak valid! Baris pertama harus memiliki 2 nilai: rows dan cols. Diberikan: " + Arrays.toString(size));
+            
+            int rows, cols;
+            try {
+                rows = Integer.parseInt(size[0]);
+                cols = Integer.parseInt(size[1]);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Format file tidak valid! Baris pertama harus berupa angka, sedangkan diberikan: " + Arrays.toString(size));
+            }
 
+            // Baca baris kedua: jumlah kendaraan
+            String checkPiecesLine = br.readLine();
+            if (checkPiecesLine == null)
+                throw new IllegalArgumentException("Format file tidak valid. Baris kedua (jumlah kendaraan) tidak ditemukan.");
+            
+            int pieceCount;
+            try {
+                pieceCount = Integer.parseInt(checkPiecesLine.trim());
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Format file tidak valid. Baris kedua (jumlah kendaraan) harus berupa angka, sedangkan diberikan: " + checkPiecesLine);
+            }
+
+            /* Baca Grid */
             Board board = new Board(rows, cols);
-            int pieceCount = Integer.parseInt(br.readLine().trim());
+            board.exitRow = -1;
+            board.exitCol = -1;
 
-            for (int i = 0; i < rows; i++) {
-                String line = br.readLine().trim();
+            List<String> gridLines = new ArrayList<>();
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.stripTrailing();
+                if (!line.isEmpty()) gridLines.add(line);
+            }
 
-                if (line.length() < cols) {
-                    throw new IllegalArgumentException("Baris ke-" + (i + 1) + " kurang dari " + cols + " kolom");
+            if (gridLines.size() < rows)
+                throw new IllegalArgumentException("Format file tidak valid! Expected " + rows + " baris papan, diberikan: " + gridLines.size());
+
+            /* Cek 'K' muncul di atas/bawah grid */
+            if (gridLines.size() > rows){
+                // K di atas grid
+                if (gridLines.get(0).contains("K")){
+                    board.exitRow = -1;
+                    board.exitCol = gridLines.get(0).indexOf('K');
+                    gridLines.remove(0);
                 }
 
+                // K di bawah grid
+                if (gridLines.get(gridLines.size() - 1).contains("K")){
+                    // Handle duplicate 'K'
+                    if (board.exitCol != -1 || board.exitRow != -1)
+                        throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
+                    board.exitRow = rows;
+                    board.exitCol = gridLines.get(gridLines.size() - 1).indexOf('K');
+                    gridLines.remove(gridLines.size() - 1);
+                }
+            }
+
+            for (int i = 0; i < rows; i++){
+                String rowLine = gridLines.get(i);
+
+                // K di kiri
+                if (rowLine.length() > 0 && rowLine.charAt(0) == 'K'){
+                    // Handle duplicate 'K'
+                    if (board.exitCol != -1 || board.exitRow != -1)
+                        throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
+                    board.exitRow = i;
+                    board.exitCol = -1;
+                    rowLine = rowLine.substring(1);
+                }
+
+                // K di kanan
+                if (rowLine.length() > cols && rowLine.charAt(cols) == 'K'){
+                    // Handle duplicate 'K'
+                    if (board.exitCol != -1 || board.exitRow != -1)
+                        throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
+                    board.exitRow = i;
+                    board.exitCol = cols;
+                }
+
+                // Isi grid
                 for (int j = 0; j < cols; j++) {
-                    char ch = line.charAt(j);
-                    if (ch == 'K') {
-                        board.exitRow = i;
-                        board.exitCol = j;
-                        board.grid[i][j] = '.'; // treat K as empty cell
+                    if (j < rowLine.length()) {
+                        char ch = rowLine.charAt(j);
+                        
+                        // jika K di dalam board (sudah dicek di pinggir dan atas bawah)
+                        if (ch == 'K'){
+                            throw new IllegalArgumentException("Format file tidak valid! 'K' ditemukan dalam papan, sedangkan hanya boleh di dinding papan.");
+                        } else {
+                            board.grid[i][j] = ch;
+                        }
                     } else {
-                        board.grid[i][j] = ch;
-                    }
-                }
-
-                // Cek apakah 'K' muncul di luar kolom grid
-                for (int j = cols; j < line.length(); j++) {
-                    if (line.charAt(j) == 'K') {
-                        board.exitRow = i;
-                        board.exitCol = j;
+                        board.grid[i][j] = '.';
                     }
                 }
             }
 
-            if (board.exitRow == -1 || board.exitCol == -1) {
-                throw new IllegalArgumentException("Pintu keluar (K) tidak ditemukan dalam input.");
-            }
+            if (board.exitRow == -1 && board.exitCol == -1)
+                    throw new IllegalArgumentException("Format file tidak valid! 'K' tidak ditemukan dalam board.");
 
             System.out.println("Board berhasil dimuat!");
             // board.printBoard("");
@@ -188,6 +258,8 @@ public class Util {
             System.out.println();
 
             return board;
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());    
         } catch (IOException e) {
             System.err.println("Gagal membaca file: " + e.getMessage());
         } catch (Exception e) {
