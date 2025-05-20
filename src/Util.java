@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Util {
 
@@ -395,6 +398,111 @@ public class Util {
         }
 
         return newBoard;
+    }
+
+    public static void writeSolutionToFile(State state, String algorithm, int heuristicId, String fileName) {
+        try {
+            // Buat folder output jika belum ada
+            File outputDir = new File("../test/output");
+            if (!outputDir.exists()) {
+                outputDir.mkdir();
+            }
+            
+            // Hilangkan ekstensi .txt jika ada pada nama file dari input pengguna
+            if (fileName.toLowerCase().endsWith(".txt")) {
+                fileName = fileName.substring(0, fileName.length() - 4);
+            }
+            String filename = "../test/output/" + fileName + ".txt";
+            
+            // Buat file writer
+            PrintWriter writer = new PrintWriter(new FileWriter(filename));
+            
+            writer.println("Rush Hour Solution");
+            writer.println("Algorithm: " + algorithm);
+            if (!algorithm.equals("UCS")) {
+                writer.println("Heuristic: " + (heuristicId == 1 ? "Jumlah kendaraan yang menghalangi" : "Jarak ke pintu keluar"));
+            }
+            writer.println();
+            
+            // Rekonstruksi path solusi
+            LinkedList<State> path = new LinkedList<>();
+            while (state != null) {
+                path.addFirst(state);
+                state = state.parent;
+            }
+            
+            // Write langkah-langkah solusi
+            int moveNum = 0;
+            for (State s : path) {
+                if (moveNum == 0) {
+                    writer.println("Papan Awal:");
+                } else {
+                    writer.printf("Gerakan %d: %s\n", moveNum, s.move);
+                }
+                
+                // Representasi papan sebagai string
+                writer.println(boardToString(s.board, (s.move != null) ? s.move.split("-")[0] : ""));
+                moveNum++;
+            }
+            
+            writer.close();
+            
+            System.out.println(Style.BRIGHT_GREEN + "Solusi berhasil disimpan ke " + filename + Style.RESET);
+            return;
+        } catch (IOException e) {
+            System.out.println(Style.YELLOW + "Gagal menyimpan solusi: " + e.getMessage() + Style.RESET);
+        }
+    }
+
+    // Tambahkan method untuk mengkonversi board ke string tanpa ANSI color
+    private static String boardToString(Board board, String highlightLabel) {
+        StringBuilder sb = new StringBuilder();
+        
+        // Border atas (dengan kemungkinan exit di atas)
+        sb.append("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == -1 && board.exitCol == j) {
+                sb.append("K-");
+            } else {
+                sb.append("--");
+            }
+        }
+        sb.append("+\n");
+
+        for (int i = 0; i < board.rows; i++) {
+            // Border kiri (dengan kemungkinan exit di kiri)
+            if (board.exitCol == -1 && board.exitRow == i) {
+                sb.append("K |");
+            } else {
+                sb.append("  |");
+            }
+
+            // Isi grid
+            for (int j = 0; j < board.cols; j++) {
+                sb.append(board.grid[i][j] + " ");
+            }
+
+            // Border kanan (dengan kemungkinan exit di kanan)
+            if (board.exitCol == board.cols && board.exitRow == i) {
+                sb.append("K");
+            } else {
+                sb.append("|");
+            }
+            sb.append("\n");
+        }
+
+        // Border bawah (dengan kemungkinan exit di bawah)
+        sb.append("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == board.rows && board.exitCol == j) {
+                sb.append("K-");
+            } else {
+                sb.append("--");
+            }
+        }
+        sb.append("+\n\n");
+        
+        return sb.toString();
     }
 
 }

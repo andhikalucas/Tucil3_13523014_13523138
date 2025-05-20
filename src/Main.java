@@ -12,8 +12,8 @@ public class Main implements Style{
         System.out.println();
 
         // List all .txt files in ../test/
-        File testFolder = new File("../test/");
-        File[] txtFiles = testFolder.listFiles((dir, name) -> name.endsWith(".txt"));
+        File testFolder = new File("../test/input");
+        File[] txtFiles = testFolder.listFiles((_, name) -> name.endsWith(".txt"));
         if (txtFiles == null || txtFiles.length == 0) {
             System.out.println(YELLOW + "Tidak ada file .txt di folder ../test/. Program berhenti." + RESET);
             sc.close();
@@ -43,7 +43,7 @@ public class Main implements Style{
                 System.out.println(GRAY + "  " + (i + 1) + ". " + RESET + txtFiles[i].getName());
             }
             System.out.println();
-            System.out.print("Pilih file input dengan angka (1-" + txtFiles.length + "):\n" + GREEN + ">> " + RESET);
+            System.out.print("Pilih file input dengan angka (1-" + txtFiles.length + ")" + RESET + ":\n" + GREEN + ">> " + RESET);
             String input = sc.nextLine().trim();
             try {
                 fileChoice = Integer.parseInt(input);
@@ -126,12 +126,48 @@ public class Main implements Style{
                 System.out.println(YELLOW + "Board gagal dimuat. Program berhenti." + RESET);
                 return;
             }
+            
             Solver solver = new Solver(board, algorithm, heuristicId);
-            solver.solve();
+            State solution = solver.solve();
+            System.out.println();
+            
+            // Penyimpanan solusi jika ada solusi
+            if (solution != null) {
+                boolean valid = false;
+                while (!valid){
+                    try {
+                        System.out.print("Apakah Anda ingin menyimpan solusi? (y/n):\n" + GREEN + ">> " + RESET);
+                        String response = sc.nextLine().trim().toLowerCase();
+                        System.out.println();
+                        
+                        if (response.equals("y")) {
+                            System.out.print("Masukkan nama file solusi " + ITALIC + YELLOW + "(tanpa ekstensi .txt):\n" + RESET + GREEN + ">> " + RESET);
+                            String fileName = sc.nextLine().trim();
+                            System.out.println();
+                            
+                            // Jika nama file kosong, gunakan default
+                            if (fileName.isEmpty()) {
+                                fileName = "solution";
+                            }
+                            
+                            // Simpan solusi ke file
+                            Util.writeSolutionToFile(solution, algorithm, heuristicId, fileName);
+                            valid = true;
+                        } else if (response.equals("n")){
+                            valid = true;
+                        } else {
+                            throw new IllegalArgumentException("Mohon masukkan pilihan 'y' atau 'n'.\n");
+                        }
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(YELLOW + "Pilihan salah. " + e.getMessage() + RESET);
+                    }
+                }
+            }
         } catch (Exception e) {
             System.out.println(YELLOW + "Terjadi kesalahan: " + e.getMessage() + RESET);
         } finally {
             sc.close();
+            System.out.println(BOLD_GREEN + "\nSampai jumpa di compile selanjutnya!" + RESET);
         }
     }
 }
