@@ -30,7 +30,7 @@ public class Board {
         System.out.print("  +");
         for (int j = 0; j < cols; j++) {
             if (exitRow == -1 && exitCol == j) {
-                System.out.print(GREEN + "K" + RESET);
+                System.out.print(GREEN + "K" + RESET + "-");
             } else {
                 System.out.print("--");
             }
@@ -70,7 +70,7 @@ public class Board {
         System.out.print("  +");
         for (int j = 0; j < cols; j++) {
             if (exitRow == rows && exitCol == j) {
-                System.out.print(GREEN + "K" + RESET);
+                System.out.print(GREEN + "K" + RESET + "-");
             } else {
                 System.out.print("--");
             }

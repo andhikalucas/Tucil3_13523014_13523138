@@ -41,7 +41,7 @@ public class Solver {
             List<State> successors = Util.getSuccessors(current, algorithm, heuristicId);
             queue.addAll(successors);
         }
-
+        Util.printSolution(start);
         System.out.println("No solution found.");
     }
 }
