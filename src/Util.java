@@ -42,12 +42,24 @@ public class Util {
                     int end = i;
                     while (end + 1 < rows && grid[end + 1][ey] == 'P') end++;
 
-                    for (int k = end + 1; k < ex; k++) {
-                        if (k < rows && grid[k][ey] != '.') return false;
-                    }
+                    // Cek arah ke exit (atas atau bawah)
+                    // Exit di atas
+                    if (ex < 0) { 
+                        // Pastikan semua cell di atas P kosong
+                        for (int k = i - 1; k >= 0; k--) {
+                            if (grid[k][ey] != '.') return false;
+                        }
+                        // P harus menempel di baris paling atas
+                        if (i == 0) return true;
 
-                    if (ex == end + 1 || ex > end) {
-                        return true;
+                    // Exit di bawah
+                    } else if (ex >= rows) { 
+                        // Pastikan semua cell di bawah P kosong
+                        for (int k = end + 1; k < rows; k++) {
+                            if (grid[k][ey] != '.') return false;
+                        }
+                        // P harus menempel di baris paling bawah
+                        if (end == rows - 1) return true;
                     }
                 }
             }
@@ -184,9 +196,7 @@ public class Util {
                 if (!line.isEmpty()) gridLines.add(line);
             }
 
-            if (gridLines.size() < rows)
-                throw new IllegalArgumentException("Format file tidak valid! Expected " + rows + " baris papan, diberikan: " + gridLines.size());
-
+            
             /* Cek 'K' muncul di atas/bawah grid */
             if (gridLines.size() > rows){
                 // K di atas grid
@@ -195,17 +205,20 @@ public class Util {
                     board.exitCol = gridLines.get(0).indexOf('K');
                     gridLines.remove(0);
                 }
-
+                
                 // K di bawah grid
                 if (gridLines.get(gridLines.size() - 1).contains("K")){
                     // Handle duplicate 'K'
                     if (board.exitCol != -1 || board.exitRow != -1)
-                        throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
+                    throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
                     board.exitRow = rows;
                     board.exitCol = gridLines.get(gridLines.size() - 1).indexOf('K');
                     gridLines.remove(gridLines.size() - 1);
                 }
             }
+            // Validasi jumlah baris setelah pengecekan K di atas bawah
+            if (gridLines.size() != rows)
+                throw new IllegalArgumentException("Format file tidak valid! Jumlah baris pada papan (" + gridLines.size() + ") tidak sesuai dengan ukuran yang dideklarasikan (" + rows + ").");
 
             for (int i = 0; i < rows; i++){
                 String rowLine = gridLines.get(i);
@@ -214,7 +227,7 @@ public class Util {
                 if (rowLine.length() > 0 && rowLine.charAt(0) == 'K'){
                     // Handle duplicate 'K'
                     if (board.exitCol != -1 || board.exitRow != -1)
-                        throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
+                    throw new IllegalArgumentException("Format file tidak valid! 'K' duplikat ditemukan.");
                     board.exitRow = i;
                     board.exitCol = -1;
                     rowLine = rowLine.substring(1);
@@ -228,6 +241,10 @@ public class Util {
                     board.exitRow = i;
                     board.exitCol = cols;
                 }
+                
+                // Validasi panjang baris setelah pengecekan K di kiri kanan
+                if (!(rowLine.length() == cols || (rowLine.length() == cols + 1 && rowLine.charAt(cols) == 'K')))
+                    throw new IllegalArgumentException("Format file tidak valid! Panjang baris ke-" + (i+1) + " (" + rowLine.length() + ") tidak sesuai dengan jumlah kolom (" + cols + ").");
 
                 // Isi grid
                 for (int j = 0; j < cols; j++) {
