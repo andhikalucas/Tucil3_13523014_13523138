@@ -2,8 +2,11 @@ public interface Style {
     public static final String RESET = "\033[0m";
     public static final String ITALIC = "\033[3m";
     public static final String GREEN = "\033[32m";
-    public static final String YELLOW = "\033[33m";
     public static final String BRIGHT_GREEN = "\033[92m";
+    public static final String BOLD_GREEN = "\033[1;32m";
+    public static final String YELLOW = "\033[33m";
+    public static final String RED = "\033[1;31m";
+    public static final String BLUE = "\u001B[34m";
     public static final String GRAY = "\033[90m";
     public static final String CLEAR_SCREEN = "\033c";
     public static final String WHITE = "\033[97m";

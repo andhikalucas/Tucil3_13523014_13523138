@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solver {
+public class Solver implements Style{
     Board initial;
     String algorithm;
     int heuristicId;
@@ -11,37 +11,38 @@ public class Solver {
         this.heuristicId = heuristicId;
     }
 
-    public void solve() {
-        long startTime = System.nanoTime();
+    public State solve() {
+    long startTime = System.nanoTime();
 
-        PriorityQueue<State> queue = new PriorityQueue<>(Comparator.comparingInt(s -> s.getTotalCost(algorithm)));
-        Set<String> visited = new HashSet<>();
+    PriorityQueue<State> queue = new PriorityQueue<>(Comparator.comparingInt(s -> s.getTotalCost(algorithm)));
+    Set<String> visited = new HashSet<>();
 
-        State start = new State(initial, 0, null, null, Heuristic.evaluate(initial, heuristicId));
-        queue.add(start);
+    State start = new State(initial, 0, null, null, Heuristic.evaluate(initial, heuristicId));
+    queue.add(start);
 
-        int visitedCount = 0;
+    int visitedCount = 0;
 
-        while (!queue.isEmpty()) {
-            State current = queue.poll();
-            visitedCount++;
+    while (!queue.isEmpty()) {
+        State current = queue.poll();
+        visitedCount++;
 
-            if (Util.isSolved(current.board)) {
-                long endTime = System.nanoTime();
-                Util.printSolution(current);
-                System.out.println("Visited nodes: " + visitedCount);
-                System.out.printf("Execution time: %.4f ms%n", (endTime - startTime) / 1e6);
-                return;
-            }
-
-            String hash = Util.hash(current.board);
-            if (visited.contains(hash)) continue;
-            visited.add(hash);
-
-            List<State> successors = Util.getSuccessors(current, algorithm, heuristicId);
-            queue.addAll(successors);
+        if (Util.isSolved(current.board)) {
+            long endTime = System.nanoTime();
+            Util.printSolution(current);
+            System.out.println(ITALIC + YELLOW + "Jumlah node yang dikunjungi: " + visitedCount + RESET);
+            System.out.printf(ITALIC + YELLOW + "Waktu eksekusi: %.4f ms%n" + RESET, (endTime - startTime) / 1e6);
+            return current;
         }
-        Util.printSolution(start);
-        System.out.println("No solution found.");
+
+        String hash = Util.hash(current.board);
+        if (visited.contains(hash)) continue;
+        visited.add(hash);
+
+        List<State> successors = Util.getSuccessors(current, algorithm, heuristicId);
+        queue.addAll(successors);
+    }
+    Util.printSolution(start);
+    System.out.println(RED + "Tidak ditemukan solusi" + RESET);
+    return null;
     }
 }
