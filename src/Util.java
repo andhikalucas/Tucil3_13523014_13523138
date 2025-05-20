@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-public class Util {
+public class Util implements Style{
 
     public static boolean isSolved(Board board) {
         int ex = board.exitRow;
@@ -86,6 +86,7 @@ public class Util {
         }
 
         int moveNum = 0;
+        // Print langkah-langkah
         for (State s : path) {
             if (moveNum == 0) {
                 System.out.println("Papan Awal:");
@@ -97,6 +98,117 @@ public class Util {
             s.board.printBoard(highlight);
             moveNum++;
         }
+        // Print langkah terakhir dengan P keluar dari board
+        if (!path.isEmpty() && isSolved(path.getLast().board)) {
+            System.out.println("Papan Akhir:");
+            printExitPath(path.getLast().board);
+        }
+    }
+
+    private static void printExitPath(Board board) {
+        // Border atas
+        System.out.print("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == -1 && board.exitCol == j) {
+                System.out.print(GREEN + "K" + RESET + "-");
+            } else {
+                System.out.print("--");
+            }
+        }
+        System.out.println("+");
+
+        // Cari posisi P
+        int pRow = -1;
+        int pCol = -1;
+        int pSize = 0;
+        boolean isHorizontal = false;
+        
+        for (int i = 0; i < board.rows; i++) {
+            for (int j = 0; j < board.cols; j++) {
+                if (board.grid[i][j] == 'P') {
+                    if (pRow == -1) {
+                        pRow = i;
+                        pCol = j;
+                    }
+                    pSize++;
+                }
+            }
+        }
+        
+        // Tentukan orientasi dan ukuran P
+        if (pRow >= 0 && pCol >= 0) {
+            // Cek orientasi horizontal
+            if (pCol + 1 < board.cols && board.grid[pRow][pCol + 1] == 'P') {
+                isHorizontal = true;
+                pSize = 0;
+                for (int j = pCol; j < board.cols && board.grid[pRow][j] == 'P'; j++) {
+                    pSize++;
+                }
+            } 
+            // Cek orientasi vertikal
+            else if (pRow + 1 < board.rows && board.grid[pRow + 1][pCol] == 'P') {
+                isHorizontal = false;
+                pSize = 0;
+                for (int i = pRow; i < board.rows && board.grid[i][pCol] == 'P'; i++) {
+                    pSize++;
+                }
+            }
+        }
+        
+        // Menentukan arah exit dan rentang jalur
+        boolean isHorizontalExit = (board.exitRow >= 0 && board.exitRow < board.rows);
+        int endPRow = isHorizontal ? pRow : pRow + pSize - 1;
+        int endPCol = isHorizontal ? pCol + pSize - 1 : pCol;
+
+        // Print isi
+        for (int i = 0; i < board.rows; i++) {
+            // Border kiri
+            if (board.exitCol == -1 && board.exitRow == i) {
+                System.out.print(GREEN + "K" + RESET + " |");
+            } else {
+                System.out.print("  |");
+            }
+
+            // Isi grid
+            for (int j = 0; j < board.cols; j++) {
+                char cell = board.grid[i][j];
+                
+                // Piece P
+                if (cell == 'P') {
+                    System.out.print(BLUE + ". " + RESET);
+                } 
+                // Jalur ke exit
+                else if (pRow != -1 && ((isHorizontalExit && i == pRow && j > endPCol && j <= board.exitCol) || 
+                        (!isHorizontalExit && j == board.exitCol && 
+                        ((board.exitRow < 0 && i < pRow) || (board.exitRow >= board.rows && i > endPRow))))) {
+                    System.out.print(BLUE + ". " + RESET);
+                } 
+                
+                else {
+                    System.out.print(cell + " ");
+                }
+            }
+
+            // Border kanan
+            if (board.exitCol == board.cols && board.exitRow == i) {
+                System.out.print(GREEN + "K" + RESET);
+            } else {
+                System.out.print("|");
+            }
+            System.out.println();
+        }
+
+        // Border bawah
+        System.out.print("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == board.rows && board.exitCol == j) {
+                System.out.print(GREEN + "K" + RESET + "-");
+            } else {
+                System.out.print("--");
+            }
+        }
+        System.out.println("+");
+        System.out.println();
     }
 
     public static int countBlockingCars(Board board) {
@@ -444,6 +556,12 @@ public class Util {
                 writer.println(boardToString(s.board, (s.move != null) ? s.move.split("-")[0] : ""));
                 moveNum++;
             }
+
+            // Tambahkan papan akhir
+            if (!path.isEmpty() && isSolved(path.getLast().board)) {
+                writer.println("Papan Akhir:");
+                writer.println(boardToStringWithExitPath(path.getLast().board));
+            }
             
             writer.close();
             
@@ -480,6 +598,62 @@ public class Util {
             // Isi grid
             for (int j = 0; j < board.cols; j++) {
                 sb.append(board.grid[i][j] + " ");
+            }
+
+            // Border kanan (dengan kemungkinan exit di kanan)
+            if (board.exitCol == board.cols && board.exitRow == i) {
+                sb.append("K");
+            } else {
+                sb.append("|");
+            }
+            sb.append("\n");
+        }
+
+        // Border bawah (dengan kemungkinan exit di bawah)
+        sb.append("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == board.rows && board.exitCol == j) {
+                sb.append("K-");
+            } else {
+                sb.append("--");
+            }
+        }
+        sb.append("+\n\n");
+        
+        return sb.toString();
+    }
+
+    // Method untuk membuat string representasi board dengan P diganti titik
+    private static String boardToStringWithExitPath(Board board) {
+        StringBuilder sb = new StringBuilder();
+        
+        // Border atas (dengan kemungkinan exit di atas)
+        sb.append("  +");
+        for (int j = 0; j < board.cols; j++) {
+            if (board.exitRow == -1 && board.exitCol == j) {
+                sb.append("K-");
+            } else {
+                sb.append("--");
+            }
+        }
+        sb.append("+\n");
+
+        for (int i = 0; i < board.rows; i++) {
+            // Border kiri (dengan kemungkinan exit di kiri)
+            if (board.exitCol == -1 && board.exitRow == i) {
+                sb.append("K |");
+            } else {
+                sb.append("  |");
+            }
+
+            // Isi grid
+            for (int j = 0; j < board.cols; j++) {
+                // Ganti 'P' dengan '.'
+                if (board.grid[i][j] == 'P') {
+                    sb.append(". ");
+                } else {
+                    sb.append(board.grid[i][j] + " ");
+                }
             }
 
             // Border kanan (dengan kemungkinan exit di kanan)
