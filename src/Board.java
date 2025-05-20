@@ -8,7 +8,7 @@ public class Board {
 
     public char[][] grid;
     public int rows, cols;
-    public int exitRow = -1, exitCol = -1;
+    public int exitRow, exitCol;
 
     public Board(int r, int c) {
         this.rows = r;
@@ -26,32 +26,56 @@ public class Board {
     }
 
     public void printBoard(String highlightLabel) {
-        // Jika exit di atas grid, tampilkan baris K
-        if (exitRow == -1) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print(j == exitCol ? GREEN + 'K' + RESET : " ");
+        // Border atas (dengan kemungkinan exit di atas)
+        System.out.print("  +");
+        for (int j = 0; j < cols; j++) {
+            if (exitRow == -1 && exitCol == j) {
+                System.out.print(GREEN + "K" + RESET);
+            } else {
+                System.out.print("--");
             }
-            System.out.println();
         }
+        System.out.println("+");
 
         for (int i = 0; i < rows; i++) {
+            // Border kiri (dengan kemungkinan exit di kiri)
+            if (exitCol == -1 && exitRow == i) {
+                System.out.print(GREEN + "K" + RESET);
+            } else {
+                System.out.print("  |");
+            }
+
+            // Isi grid
             for (int j = 0; j < cols; j++) {
                 char ch = grid[i][j];
-
-                // Tampilkan K jika berada di dalam grid
-                if (i == exitRow && j == exitCol) {
-                    System.out.print(GREEN + 'K' + RESET);
-                } else if (ch == 'P') {
-                    System.out.print(RED + ch + RESET);
+                if (ch == 'P') {
+                    System.out.print(RED + ch + RESET + " ");
                 } else if (("" + ch).equals(highlightLabel)) {
-                    System.out.print(BLUE + ch + RESET);
+                    System.out.print(BLUE + ch + RESET + " ");
                 } else {
-                    System.out.print(ch);
+                    System.out.print(ch + " ");
                 }
+            }
+
+            // Border kanan (dengan kemungkinan exit di kanan)
+            if (exitCol == cols && exitRow == i) {
+                System.out.print(GREEN + "K" + RESET);
+            } else {
+                System.out.print("|");
             }
             System.out.println();
         }
+
+        // Border bawah (dengan kemungkinan exit di bawah)
+        System.out.print("  +");
+        for (int j = 0; j < cols; j++) {
+            if (exitRow == rows && exitCol == j) {
+                System.out.print(GREEN + "K" + RESET);
+            } else {
+                System.out.print("--");
+            }
+        }
+        System.out.println("+");
         System.out.println();
     }
-
 }
