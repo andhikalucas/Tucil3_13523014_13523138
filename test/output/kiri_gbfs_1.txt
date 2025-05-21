@@ -1,0 +1,125 @@
+Rush Hour Solution
+Algorithm: Greedy
+Heuristic: Jumlah kendaraan yang menghalangi
+
+Papan Awal:
+  +------------+
+  |. . . . B A |
+  |. C C . B A |
+K |. E D P P A |
+  |. E D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 1: C-kanan
+  +------------+
+  |. . . . B A |
+  |. . C C B A |
+K |. E D P P A |
+  |. E D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 2: H-kiri
+  +------------+
+  |. . . . B A |
+  |. . C C B A |
+K |. E D P P A |
+  |. E D G F F |
+  |H H . G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 3: E-atas
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D G F F |
+  |H H . G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 4: H-kanan
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 5: G-bawah
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D . F F |
+  |. H H G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 6: H-kiri
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D . F F |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 7: F-kiri
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D F F . |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 8: A-bawah
+  +------------+
+  |. E . . B . |
+  |. E C C B . |
+K |. . D P P . |
+  |. . D F F A |
+  |H H . G . A |
+  |. . . G . A |
+  +------------+
+
+
+Gerakan 9: D-bawah
+  +------------+
+  |. E . . B . |
+  |. E C C B . |
+K |. . . P P . |
+  |. . D F F A |
+  |H H D G . A |
+  |. . . G . A |
+  +------------+
+
+
+Papan Akhir:
+  +------------+
+  |. E . . B . |
+  |. E C C B . |
+K |. . . . . . |
+  |. . D F F A |
+  |H H D G . A |
+  |. . . G . A |
+  +------------+
+
+

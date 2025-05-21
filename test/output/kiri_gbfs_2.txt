@@ -1,0 +1,191 @@
+Rush Hour Solution
+Algorithm: Greedy
+Heuristic: Jarak ke pintu keluar
+
+Papan Awal:
+  +------------+
+  |. . . . B A |
+  |. C C . B A |
+K |. E D P P A |
+  |. E D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 1: C-kanan
+  +------------+
+  |. . . . B A |
+  |. . C C B A |
+K |. E D P P A |
+  |. E D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 2: H-kiri
+  +------------+
+  |. . . . B A |
+  |. . C C B A |
+K |. E D P P A |
+  |. E D G F F |
+  |H H . G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 3: E-atas
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D G F F |
+  |H H . G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 4: H-kanan
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D G F F |
+  |. H H G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 5: G-bawah
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D . F F |
+  |. H H G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 6: H-kiri
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D . F F |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 7: F-kiri
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D F F . |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 8: H-kanan
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . D P P A |
+  |. . D F F . |
+  |. H H G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 9: E-bawah
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E D P P A |
+  |. . D F F . |
+  |. H H G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 10: H-kiri
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E D P P A |
+  |. . D F F . |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 11: F-kanan
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E D P P A |
+  |. . D . F F |
+  |H H . G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 12: G-atas
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E D P P A |
+  |. . D G F F |
+  |H H . G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 13: D-bawah
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E . P P A |
+  |. . D G F F |
+  |H H D G . . |
+  |. . . . . . |
+  +------------+
+
+
+Gerakan 14: G-bawah
+  +------------+
+  |. . . . B A |
+  |. E C C B A |
+K |. E . P P A |
+  |. . D . F F |
+  |H H D G . . |
+  |. . . G . . |
+  +------------+
+
+
+Gerakan 15: E-atas
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . . P P A |
+  |. . D . F F |
+  |H H D G . . |
+  |. . . G . . |
+  +------------+
+
+
+Papan Akhir:
+  +------------+
+  |. E . . B A |
+  |. E C C B A |
+K |. . . . . A |
+  |. . D . F F |
+  |H H D G . . |
+  |. . . G . . |
+  +------------+
+
+
