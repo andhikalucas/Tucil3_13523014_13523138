@@ -35,7 +35,7 @@ public class Board implements Style{
         for (int i = 0; i < rows; i++) {
             // Border kiri (dengan kemungkinan exit di kiri)
             if (exitCol == -1 && exitRow == i) {
-                System.out.print(GREEN + "K" + RESET);
+                System.out.print(GREEN + "  K" + RESET);
             } else {
                 System.out.print("  |");
             }
