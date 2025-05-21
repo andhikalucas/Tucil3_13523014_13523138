@@ -1,0 +1,356 @@
+Rush Hour Solution
+Algorithm: Greedy
+Heuristic: Jarak ke pintu keluar
+
+Papan Awal:
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 1: C-atas
+  +------------+
+  |A A B C . F |
+  |. . B C D F |
+  |G P P . D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 2: M-kanan
+  +------------+
+  |A A B C . F |
+  |. . B C D F |
+  |G P P . D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 3: I-kiri
+  +------------+
+  |A A B C . F |
+  |. . B C D F |
+  |G P P . D F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 4: M-kiri
+  +------------+
+  |A A B C . F |
+  |. . B C D F |
+  |G P P . D F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 5: F-bawah
+  +------------+
+  |A A B C . . |
+  |. . B C D . |
+  |G P P . D . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Gerakan 6: G-atas
+  +------------+
+  |A A B C . . |
+  |G . B C D . |
+  |G P P . D . K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Gerakan 7: F-atas
+  +------------+
+  |A A B C . . |
+  |G . B C D . |
+  |G P P . D F K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 8: M-kanan
+  +------------+
+  |A A B C . . |
+  |G . B C D . |
+  |G P P . D F K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 9: G-bawah
+  +------------+
+  |A A B C . . |
+  |. . B C D . |
+  |G P P . D F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 10: M-kiri
+  +------------+
+  |A A B C . . |
+  |. . B C D . |
+  |G P P . D F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 11: F-atas
+  +------------+
+  |A A B C . . |
+  |. . B C D F |
+  |G P P . D F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 12: M-kanan
+  +------------+
+  |A A B C . . |
+  |. . B C D F |
+  |G P P . D F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 13: C-bawah
+  +------------+
+  |A A B . . . |
+  |. . B C D F |
+  |G P P C D F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 14: M-kiri
+  +------------+
+  |A A B . . . |
+  |. . B C D F |
+  |G P P C D F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 15: F-atas
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 16: M-kanan
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 17: F-bawah
+  +------------+
+  |A A B . . . |
+  |. . B C D . |
+  |G P P C D F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 18: M-kiri
+  +------------+
+  |A A B . . . |
+  |. . B C D . |
+  |G P P C D F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 19: G-atas
+  +------------+
+  |A A B . . . |
+  |G . B C D . |
+  |G P P C D F K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 20: M-kanan
+  +------------+
+  |A A B . . . |
+  |G . B C D . |
+  |G P P C D F K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 21: D-atas
+  +------------+
+  |A A B . D . |
+  |G . B C D . |
+  |G P P C . F K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 22: G-bawah
+  +------------+
+  |A A B . D . |
+  |. . B C D . |
+  |G P P C . F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 23: M-kiri
+  +------------+
+  |A A B . D . |
+  |. . B C D . |
+  |G P P C . F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 24: F-atas
+  +------------+
+  |A A B . D . |
+  |. . B C D F |
+  |G P P C . F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 25: M-kanan
+  +------------+
+  |A A B . D . |
+  |. . B C D F |
+  |G P P C . F K
+  |G H I I I F |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 26: G-atas
+  +------------+
+  |A A B . D . |
+  |G . B C D F |
+  |G P P C . F K
+  |G H I I I F |
+  |. H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 27: M-kiri
+  +------------+
+  |A A B . D . |
+  |G . B C D F |
+  |G P P C . F K
+  |G H I I I F |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 28: F-bawah
+  +------------+
+  |A A B . D . |
+  |G . B C D . |
+  |G P P C . . K
+  |G H I I I F |
+  |. H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Gerakan 29: G-bawah
+  +------------+
+  |A A B . D . |
+  |. . B C D . |
+  |G P P C . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Gerakan 30: C-atas
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G P P . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Papan Akhir:
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G . . . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+

@@ -1,0 +1,70 @@
+Rush Hour Solution
+Algorithm: A*
+Heuristic: Jumlah kendaraan yang menghalangi
+
+Papan Awal:
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 1: I-kiri
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 2: D-atas
+  +------------+
+  |A A B . D F |
+  |. . B C D F |
+  |G P P C . F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 3: F-bawah
+  +------------+
+  |A A B . D . |
+  |. . B C D . |
+  |G P P C . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Gerakan 4: C-atas
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G P P . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Papan Akhir:
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G . . . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+

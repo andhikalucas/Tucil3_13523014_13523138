@@ -1,0 +1,10300 @@
+Rush Hour Solution
+Algorithm: Greedy
+Heuristic: Jumlah kendaraan yang menghalangi
+
+Papan Awal:
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 1: C-bawah
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 2: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 3: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 4: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 5: H-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 6: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 7: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 8: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 9: H-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 10: H-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 11: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 12: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 13: C-atas
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 14: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 15: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 16: H-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 17: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 18: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 19: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 20: H-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 21: Q-bawah
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 22: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 23: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 24: H-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 25: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 26: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 27: L-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 28: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 29: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 30: H-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 31: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 32: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 33: L-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 34: M-kiri
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 35: M-kanan
+  +------------+
+  |C U U P . . |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 36: C-bawah
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 37: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 38: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 39: H-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 40: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 41: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 42: H-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 43: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 44: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 45: L-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 46: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 47: M-kanan
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 48: H-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 49: M-kiri
+  +------------+
+  |. U U P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 50: U-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 51: M-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 52: L-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 53: M-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 54: M-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 55: H-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 56: M-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 57: M-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 58: M-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 59: L-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 60: M-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 61: M-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 62: H-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 63: M-kiri
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 64: M-kanan
+  +------------+
+  |U U . P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 65: B-bawah
+  +------------+
+  |U U . P . . |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . B M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 66: L-kiri
+  +------------+
+  |U U . P . . |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . B M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 67: H-kanan
+  +------------+
+  |U U . P . . |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . B M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 68: L-kanan
+  +------------+
+  |U U . P . . |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . B M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 69: B-atas
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 70: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 71: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 72: L-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 73: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 74: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 75: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 76: L-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 77: H-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 78: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 79: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 80: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 81: L-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 82: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 83: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 84: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 85: H-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 86: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 87: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 88: D-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 89: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 90: L-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 91: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 92: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 93: H-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 94: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 95: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 96: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 97: L-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 98: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 99: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 100: H-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 101: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 102: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 103: C-bawah
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 104: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 105: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D . L L |
+  |C M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 106: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D . L L |
+  |C . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 107: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D . L L |
+  |C . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 108: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D . L L |
+  |C M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 109: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D . L L |
+  |C . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 110: L-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 111: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 112: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 113: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L . |
+  |C . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 114: Q-atas
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 115: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 116: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 117: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 118: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 119: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 120: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C D D L L Q |
+  |C . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 121: C-atas
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 122: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 123: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 124: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 125: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 126: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 127: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 128: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 129: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 130: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 131: C-bawah
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 132: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 133: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C M M . . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 134: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 135: D-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 136: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C M M . . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 137: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 138: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 139: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 140: L-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 141: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 142: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 143: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 144: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 145: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 146: Q-bawah
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 147: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 148: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 149: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 150: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 151: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 152: L-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 153: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 154: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 155: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 156: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 157: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 158: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 159: D-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 160: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 161: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 162: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 163: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 164: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 165: L-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 166: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 167: C-atas
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 168: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 169: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 170: L-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 171: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 172: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 173: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 174: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 175: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 176: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 177: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 178: D-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 179: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 180: H-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 181: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 182: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 183: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 184: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 185: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 186: C-atas
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 187: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 188: H-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 189: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 190: H-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 191: M-kiri
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 192: M-kanan
+  +------------+
+  |U U B P . . |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 193: C-bawah
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 194: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 195: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 196: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 197: M-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 198: M-kanan
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 199: H-kiri
+  +------------+
+  |U U B P . . |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 200: A-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 201: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 202: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 203: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 204: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 205: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |C A D D L L |
+  |C . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 206: C-atas
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 207: M-kiri
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 208: M-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 209: H-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 210: M-kiri
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 211: M-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 212: H-kiri
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 213: M-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C A B Z Z Z |
+  |. A D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 214: C-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 215: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 216: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 217: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 218: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 219: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 220: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 221: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C A B Z Z Z |
+  |C A D D L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 222: C-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |. A D D L L |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 223: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |. A D D L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 224: H-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |. A D D L L |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 225: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. A B Z Z Z |
+  |. A D D L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 226: A-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. A D D L L |
+  |C A M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 227: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. A D D L L |
+  |C A M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 228: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. A D D L L |
+  |C A . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 229: C-atas
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C A D D L L |
+  |. A . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 230: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C A D D L L |
+  |. A M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 231: H-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C A D D L L |
+  |. A M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 232: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C A D D L L |
+  |. A . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 233: C-atas
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. A D D L L |
+  |. A . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 234: M-kiri
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. A D D L L |
+  |. A M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 235: C-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C A D D L L |
+  |C A M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 236: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C A D D L L |
+  |C A . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 237: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C A D D L L |
+  |C A . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 238: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C A D D L L |
+  |C A M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 239: A-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C . D D L L |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 240: D-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D . L L |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 241: L-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D L L . |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 242: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D L L . |
+  |C A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 243: C-atas
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D L L . |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 244: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 245: L-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 246: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 247: C-atas
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 248: M-kiri
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 249: D-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. . D D L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 250: M-kanan
+  +------------+
+  |U U B P . . |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. . D D L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 251: C-bawah
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 252: D-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 253: L-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 254: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C A M M . Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 255: Q-atas
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A M M . Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 256: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A . M M Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 257: H-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A . M M Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 258: M-kiri
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A M M . Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 259: L-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C A M M . Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 260: M-kanan
+  +------------+
+  |U U B P . . |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C A . M M Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 261: B-bawah
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |. . . Z Z Z |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 262: Z-kiri
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |Z Z Z . . . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 263: Z-kanan
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |. Z Z Z . . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 264: U-kanan
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. Z Z Z . . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 265: Z-kanan
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. . . Z Z Z |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 266: Z-kiri
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. . Z Z Z . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 267: Q-atas
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. . Z Z Z Q |
+  |D D B L L Q |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 268: M-kanan
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. . Z Z Z Q |
+  |D D B L L Q |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 269: Z-kiri
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. Z Z Z . Q |
+  |D D B L L Q |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 270: M-kiri
+  +------------+
+  |. U U P . . |
+  |. . . P . . |
+  |. Z Z Z . Q |
+  |D D B L L Q |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 271: U-kiri
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |. Z Z Z . Q |
+  |D D B L L Q |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 272: M-kanan
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |. Z Z Z . Q |
+  |D D B L L Q |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 273: Z-kiri
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |Z Z Z . . Q |
+  |D D B L L Q |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 274: M-kiri
+  +------------+
+  |U U . P . . |
+  |. . . P . . |
+  |Z Z Z . . Q |
+  |D D B L L Q |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 275: P-bawah
+  +------------+
+  |U U . . . . |
+  |. . . P . . |
+  |Z Z Z P . Q |
+  |D D B L L Q |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 276: Q-atas
+  +------------+
+  |U U . . . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 277: U-kanan
+  +------------+
+  |. . . . U U |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 278: L-kanan
+  +------------+
+  |. . . . U U |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 279: M-kanan
+  +------------+
+  |. . . . U U |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 280: L-kiri
+  +------------+
+  |. . . . U U |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 281: U-kiri
+  +------------+
+  |U U . . . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 282: L-kanan
+  +------------+
+  |U U . . . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 283: M-kiri
+  +------------+
+  |U U . . . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 284: U-kanan
+  +------------+
+  |. . U U . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 285: M-kanan
+  +------------+
+  |. . U U . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 286: L-kiri
+  +------------+
+  |. . U U . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 287: M-kiri
+  +------------+
+  |. . U U . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 288: U-kiri
+  +------------+
+  |. U U . . . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 289: U-kanan
+  +------------+
+  |. . . U U . |
+  |. . . P . Q |
+  |Z Z Z P . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 290: Q-atas
+  +------------+
+  |. . . U U Q |
+  |. . . P . Q |
+  |Z Z Z P . . |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 291: L-kanan
+  +------------+
+  |. . . U U Q |
+  |. . . P . Q |
+  |Z Z Z P . . |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 292: P-bawah
+  +------------+
+  |. . . U U Q |
+  |. . . . . Q |
+  |Z Z Z P . . |
+  |D D B P L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 293: U-kiri
+  +------------+
+  |. . U U . Q |
+  |. . . . . Q |
+  |Z Z Z P . . |
+  |D D B P L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 294: M-kanan
+  +------------+
+  |. . U U . Q |
+  |. . . . . Q |
+  |Z Z Z P . . |
+  |D D B P L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 295: P-bawah
+  +------------+
+  |. . U U . Q |
+  |. . . . . Q |
+  |Z Z Z . . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 296: Z-kanan
+  +------------+
+  |. . U U . Q |
+  |. . . . . Q |
+  |. Z Z Z . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 297: Z-kanan
+  +------------+
+  |. . U U . Q |
+  |. . . . . Q |
+  |. . . Z Z Z |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 298: U-kiri
+  +------------+
+  |U U . . . Q |
+  |. . . . . Q |
+  |. . . Z Z Z |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 299: Z-kiri
+  +------------+
+  |U U . . . Q |
+  |. . . . . Q |
+  |Z Z Z . . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 300: Z-kanan
+  +------------+
+  |U U . . . Q |
+  |. . . . . Q |
+  |. Z Z Z . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 301: Z-kanan
+  +------------+
+  |U U . . . Q |
+  |. . . . . Q |
+  |. . Z Z Z . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 302: U-kanan
+  +------------+
+  |. U U . . Q |
+  |. . . . . Q |
+  |. . Z Z Z . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 303: Z-kiri
+  +------------+
+  |. U U . . Q |
+  |. . . . . Q |
+  |Z Z Z . . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 304: Z-kanan
+  +------------+
+  |. U U . . Q |
+  |. . . . . Q |
+  |. Z Z Z . . |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 305: Q-bawah
+  +------------+
+  |. U U . . . |
+  |. . . . . Q |
+  |. Z Z Z . Q |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 306: Z-kiri
+  +------------+
+  |. U U . . . |
+  |. . . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 307: U-kiri
+  +------------+
+  |U U . . . . |
+  |. . . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 308: U-kanan
+  +------------+
+  |. . . . U U |
+  |. . . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |C A B P M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 309: P-atas
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |Z Z Z . . Q |
+  |D D B . L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 310: L-kiri
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |Z Z Z . . Q |
+  |D D B L L . |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 311: M-kiri
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |Z Z Z . . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 312: L-kanan
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |Z Z Z . . Q |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 313: Z-kanan
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |. Z Z Z . Q |
+  |D D B . L L |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 314: M-kanan
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |. Z Z Z . Q |
+  |D D B . L L |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 315: L-kiri
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |. Z Z Z . Q |
+  |D D B L L . |
+  |C A B . M M |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 316: M-kiri
+  +------------+
+  |. . . P U U |
+  |. . . P . Q |
+  |. Z Z Z . Q |
+  |D D B L L . |
+  |C A B M M . |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 317: Q-bawah
+  +------------+
+  |. . . P U U |
+  |. . . P . . |
+  |. Z Z Z . . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 318: Z-kiri
+  +------------+
+  |. . . P U U |
+  |. . . P . . |
+  |Z Z Z . . . |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 319: Z-kanan
+  +------------+
+  |. . . P U U |
+  |. . . P . . |
+  |. . . Z Z Z |
+  |D D B L L Q |
+  |C A B M M Q |
+  |C A B H H H |
+  +------K-----+
+
+
+Gerakan 320: B-atas
+  +------------+
+  |. . . P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |C A . M M Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 321: M-kiri
+  +------------+
+  |. . . P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |C A M M . Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 322: H-kiri
+  +------------+
+  |. . . P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |C A M M . Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 323: M-kanan
+  +------------+
+  |. . . P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |C A . M M Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 324: B-atas
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C A . M M Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 325: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C A M M . Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 326: L-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A M M . Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 327: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C A . M M Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 328: Q-bawah
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 329: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C A M M . Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 330: L-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C A M M . Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 331: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 332: D-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 333: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |C A M M . Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 334: L-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C A M M . Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 335: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C A . M M Q |
+  |C A H H H Q |
+  +------K-----+
+
+
+Gerakan 336: C-atas
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 337: M-kiri
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 338: D-kiri
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 339: M-kanan
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 340: L-kiri
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 341: M-kiri
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 342: B-bawah
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 343: M-kanan
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 344: C-bawah
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 345: M-kiri
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 346: L-kanan
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 347: M-kanan
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 348: B-bawah
+  +------------+
+  |. . . P U U |
+  |C . . P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. A B M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 349: L-kiri
+  +------------+
+  |. . . P U U |
+  |C . . P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. A B M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 350: C-atas
+  +------------+
+  |C . . P U U |
+  |C . . P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. A B M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 351: Q-atas
+  +------------+
+  |C . . P U U |
+  |C . . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. A B M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 352: C-bawah
+  +------------+
+  |. . . P U U |
+  |C . . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. A B M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 353: H-kanan
+  +------------+
+  |. . . P U U |
+  |C . . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. A B M M Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 354: B-atas
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. A . M M Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 355: M-kiri
+  +------------+
+  |. . . P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. A M M . Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 356: C-atas
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. A M M . Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 357: M-kanan
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. A . M M Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 358: H-kiri
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 359: M-kiri
+  +------------+
+  |C . . P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 360: B-atas
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 361: L-kiri
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 362: M-kanan
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 363: C-bawah
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 364: M-kiri
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 365: L-kanan
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 366: M-kanan
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 367: D-kanan
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 368: H-kanan
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. A . M M Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 369: M-kiri
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. A M M . Q |
+  |. A . H H H |
+  +------K-----+
+
+
+Gerakan 370: C-bawah
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C A M M . Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 371: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C A . M M Q |
+  |C A . H H H |
+  +------K-----+
+
+
+Gerakan 372: H-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C A . M M Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 373: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C A M M . Q |
+  |C A H H H . |
+  +------K-----+
+
+
+Gerakan 374: C-atas
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 375: M-kanan
+  +------------+
+  |C . B P U U |
+  |C . B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 376: C-bawah
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. A . M M Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 377: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. A M M . Q |
+  |. A H H H . |
+  +------K-----+
+
+
+Gerakan 378: Q-bawah
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 379: L-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D . L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 380: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C D D . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 381: D-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C . D D L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 382: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |C . B Z Z Z |
+  |C . D D L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 383: C-atas
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. . D D L L |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 384: M-kanan
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. . D D L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 385: D-kiri
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 386: L-kiri
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 387: M-kiri
+  +------------+
+  |. . B P U U |
+  |C . B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 388: C-bawah
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D L L . |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 389: L-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D . L L |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 390: M-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C D D . L L |
+  |C A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 391: D-kanan
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C . D D L L |
+  |C A . M M Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 392: M-kiri
+  +------------+
+  |. . B P U U |
+  |. . B P . . |
+  |. . B Z Z Z |
+  |C . D D L L |
+  |C A M M . Q |
+  |. A H H H Q |
+  +------K-----+
+
+
+Gerakan 393: A-atas
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 394: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 395: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 396: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 397: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 398: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 399: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |C . D D L L |
+  |C . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 400: C-atas
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 401: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 402: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 403: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 404: H-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 405: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 406: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 407: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 408: D-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 409: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 410: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 411: L-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 412: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 413: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 414: L-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 415: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 416: H-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 417: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 418: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 419: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 420: L-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 421: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 422: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 423: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 424: H-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 425: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 426: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 427: L-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 428: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 429: L-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 430: Q-atas
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 431: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 432: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 433: L-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 434: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 435: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 436: H-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 437: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 438: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 439: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 440: L-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 441: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 442: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 443: H-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 444: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 445: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 446: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 447: L-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 448: H-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 449: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 450: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 451: C-bawah
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 452: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 453: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 454: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 455: H-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 456: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |M M . . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 457: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 458: L-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 459: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 460: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 461: H-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 462: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 463: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 464: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 465: L-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 466: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 467: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 468: D-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 469: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 470: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 471: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 472: H-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 473: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 474: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 475: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 476: H-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 477: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 478: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 479: C-bawah
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 480: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 481: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C M M . . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 482: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 483: D-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 484: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C M M . . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 485: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 486: H-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 487: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 488: L-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 489: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 490: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 491: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 492: L-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 493: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 494: Q-bawah
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 495: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 496: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 497: L-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 498: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 499: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 500: L-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 501: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 502: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D L L . . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 503: L-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 504: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 505: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 506: L-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 507: D-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 508: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 509: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 510: H-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 511: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 512: L-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 513: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 514: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 515: C-atas
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 516: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 517: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 518: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 519: H-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 520: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 521: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 522: L-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 523: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 524: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 525: H-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 526: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 527: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 528: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 529: L-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 530: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 531: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 532: C-atas
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 533: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 534: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 535: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 536: H-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 537: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 538: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 539: L-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 540: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 541: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 542: H-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 543: M-kiri
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 544: M-kanan
+  +------------+
+  |C . B P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 545: C-bawah
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 546: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 547: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 548: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 549: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 550: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 551: L-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 552: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 553: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 554: H-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 555: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 556: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 557: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 558: L-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 559: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 560: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C D D . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 561: D-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 562: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 563: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 564: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 565: M-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 566: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 567: H-kiri
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 568: M-kanan
+  +------------+
+  |. . B P U U |
+  |. A B P . . |
+  |C A B Z Z Z |
+  |C . D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 569: C-atas
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 570: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 571: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 572: H-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 573: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 574: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 575: D-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 576: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 577: L-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 578: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 579: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 580: L-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 581: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 582: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 583: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 584: H-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 585: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 586: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 587: L-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 588: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 589: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 590: H-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 591: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 592: L-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 593: M-kanan
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 594: M-kiri
+  +------------+
+  |. . B P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 595: A-atas
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 596: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 597: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 598: L-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 599: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 600: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 601: H-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 602: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 603: L-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 604: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 605: L-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 606: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 607: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 608: H-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 609: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 610: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 611: L-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 612: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 613: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 614: L-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 615: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 616: Q-atas
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 617: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 618: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 619: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 620: H-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 621: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 622: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 623: L-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 624: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 625: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 626: H-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 627: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 628: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 629: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 630: L-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 631: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 632: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 633: C-atas
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 634: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 635: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 636: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 637: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 638: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 639: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 640: L-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 641: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 642: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 643: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 644: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 645: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 646: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 647: L-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 648: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 649: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 650: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 651: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 652: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 653: L-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 654: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 655: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 656: D-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 657: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 658: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 659: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 660: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 661: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 662: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 663: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 664: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 665: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 666: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 667: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 668: C-bawah
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 669: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 670: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 671: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 672: H-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 673: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 674: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 675: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |C D D L L Q |
+  |C . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 676: C-atas
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 677: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 678: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 679: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 680: H-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 681: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 682: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 683: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 684: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 685: H-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 686: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 687: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |C . B Z Z Z |
+  |C D D L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 688: C-atas
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 689: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 690: H-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 691: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 692: H-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 693: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 694: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 695: C-bawah
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C . M M . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 696: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 697: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C . . M M Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 698: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 699: D-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 700: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C H H H . . |
+  +------K-----+
+
+
+Gerakan 701: H-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 702: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 703: L-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C M M . . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 704: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . . H H H |
+  +------K-----+
+
+
+Gerakan 705: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 706: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 707: L-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C . . M M Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 708: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L Q |
+  |C . M M . Q |
+  |C . H H H . |
+  +------K-----+
+
+
+Gerakan 709: Q-bawah
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 710: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 711: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 712: L-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 713: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 714: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 715: L-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 716: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 717: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 718: L-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 719: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 720: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 721: L-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 722: D-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 723: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 724: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 725: H-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C . . M M Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 726: M-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 727: L-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |C M M . . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 728: M-kanan
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C . H H H Q |
+  +------K-----+
+
+
+Gerakan 729: H-kiri
+  +------------+
+  |. A B P U U |
+  |. A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |C . M M . Q |
+  |C H H H . Q |
+  +------K-----+
+
+
+Gerakan 730: C-atas
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 731: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 732: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 733: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 734: H-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 735: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 736: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 737: L-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 738: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 739: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 740: H-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 741: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 742: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 743: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 744: L-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 745: M-kanan
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 746: M-kiri
+  +------------+
+  |. A B P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 747: C-atas
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 748: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 749: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 750: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 751: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 752: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 753: L-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 754: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 755: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 756: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 757: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 758: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. D D . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 759: D-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 760: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 761: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 762: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 763: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 764: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 765: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 766: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |. . D D L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 767: D-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 768: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 769: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 770: L-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 771: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 772: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 773: L-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 774: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 775: H-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 776: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 777: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D L L . . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 778: L-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 779: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 780: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 781: L-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 782: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 783: H-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 784: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 785: L-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 786: M-kanan
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 787: M-kiri
+  +------------+
+  |C A B P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D . L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 788: B-bawah
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 789: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 790: M-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 791: H-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 792: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 793: M-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 794: H-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 795: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 796: M-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 797: L-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 798: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 799: M-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 800: H-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 801: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 802: C-bawah
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 803: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 804: L-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 805: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 806: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 807: H-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 808: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 809: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 810: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 811: L-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 812: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 813: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 814: H-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 815: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 816: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 817: A-bawah
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 818: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 819: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 820: H-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 821: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 822: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 823: L-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 824: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 825: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 826: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 827: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 828: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 829: L-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 830: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 831: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 832: C-atas
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 833: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 834: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 835: H-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 836: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 837: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |H H H . . Q |
+  +------K-----+
+
+
+Gerakan 838: H-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 839: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |M M . . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 840: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B . L L |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 841: L-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . . M M Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 842: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 843: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. . H H H Q |
+  +------K-----+
+
+
+Gerakan 844: H-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. . M M . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 845: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L . |
+  |. M M . . Q |
+  |. H H H . Q |
+  +------K-----+
+
+
+Gerakan 846: Q-atas
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 847: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 848: H-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 849: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 850: H-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 851: M-kanan
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 852: M-kiri
+  +------------+
+  |C . . P U U |
+  |C A B P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 853: C-bawah
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 854: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 855: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 856: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 857: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 858: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 859: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 860: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 861: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 862: H-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 863: M-kiri
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 864: M-kanan
+  +------------+
+  |. . . P U U |
+  |C A B P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 865: B-bawah
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 866: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 867: H-kanan
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 868: C-atas
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 869: H-kiri
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 870: H-kanan
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 871: A-atas
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 872: H-kiri
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 873: H-kanan
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 874: H-kiri
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 875: C-bawah
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 876: H-kanan
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 877: H-kiri
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . B M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 878: B-atas
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 879: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 880: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 881: H-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 882: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 883: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 884: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 885: H-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 886: M-kiri
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 887: M-kanan
+  +------------+
+  |. A . P U U |
+  |C A B P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 888: C-atas
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 889: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 890: H-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. M M . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 891: M-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . . M M Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 892: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 893: H-kanan
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |. . M M . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 894: M-kiri
+  +------------+
+  |C A . P U U |
+  |C A B P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |M M . . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 895: B-bawah
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 896: H-kanan
+  +------------+
+  |C A . P U U |
+  |C A . P . . |
+  |. . B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 897: C-bawah
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 898: H-kiri
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 899: H-kanan
+  +------------+
+  |. A . P U U |
+  |C A . P . . |
+  |C . B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 900: A-bawah
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . H H H . |
+  +------K-----+
+
+
+Gerakan 901: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 902: H-kanan
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 903: H-kiri
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 904: C-atas
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. H H H . . |
+  +------K-----+
+
+
+Gerakan 905: H-kanan
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A B Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 906: B-bawah
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A . Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 907: C-bawah
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A . Z Z Z |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 908: Z-kiri
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A Z Z Z . |
+  |D D B L L Q |
+  |M M B . . Q |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 909: Q-atas
+  +------------+
+  |. . . P U U |
+  |C A . P . . |
+  |C A Z Z Z Q |
+  |D D B L L Q |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 910: C-atas
+  +------------+
+  |C . . P U U |
+  |C A . P . . |
+  |. A Z Z Z Q |
+  |D D B L L Q |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 911: Q-atas
+  +------------+
+  |C . . P U U |
+  |C A . P . Q |
+  |. A Z Z Z Q |
+  |D D B L L . |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 912: L-kanan
+  +------------+
+  |C . . P U U |
+  |C A . P . Q |
+  |. A Z Z Z Q |
+  |D D B . L L |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 913: A-atas
+  +------------+
+  |C A . P U U |
+  |C A . P . Q |
+  |. . Z Z Z Q |
+  |D D B . L L |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 914: Z-kiri
+  +------------+
+  |C A . P U U |
+  |C A . P . Q |
+  |Z Z Z . . Q |
+  |D D B . L L |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 915: P-bawah
+  +------------+
+  |C A . . U U |
+  |C A . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 916: U-kiri
+  +------------+
+  |C A U U . . |
+  |C A . P . Q |
+  |Z Z Z P . Q |
+  |D D B . L L |
+  |M M B . . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 917: P-bawah
+  +------------+
+  |C A U U . . |
+  |C A . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 918: U-kanan
+  +------------+
+  |C A . . U U |
+  |C A . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 919: Z-kanan
+  +------------+
+  |C A . . U U |
+  |C A . . . Q |
+  |. Z Z Z . Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 920: Z-kanan
+  +------------+
+  |C A . . U U |
+  |C A . . . Q |
+  |. . Z Z Z Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 921: U-kiri
+  +------------+
+  |C A . U U . |
+  |C A . . . Q |
+  |. . Z Z Z Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 922: Z-kiri
+  +------------+
+  |C A . U U . |
+  |C A . . . Q |
+  |Z Z Z . . Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 923: Z-kanan
+  +------------+
+  |C A . U U . |
+  |C A . . . Q |
+  |. Z Z Z . Q |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 924: Q-atas
+  +------------+
+  |C A . U U Q |
+  |C A . . . Q |
+  |. Z Z Z . . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 925: Z-kiri
+  +------------+
+  |C A . U U Q |
+  |C A . . . Q |
+  |Z Z Z . . . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 926: Z-kanan
+  +------------+
+  |C A . U U Q |
+  |C A . . . Q |
+  |. . Z Z Z . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 927: U-kiri
+  +------------+
+  |C A U U . Q |
+  |C A . . . Q |
+  |. . Z Z Z . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 928: Z-kiri
+  +------------+
+  |C A U U . Q |
+  |C A . . . Q |
+  |Z Z Z . . . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 929: Z-kanan
+  +------------+
+  |C A U U . Q |
+  |C A . . . Q |
+  |. Z Z Z . . |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 930: Z-kanan
+  +------------+
+  |C A U U . Q |
+  |C A . . . Q |
+  |. . . Z Z Z |
+  |D D B P L L |
+  |M M B P . . |
+  |. . B H H H |
+  +------K-----+
+
+
+Gerakan 931: B-atas
+  +------------+
+  |C A U U . Q |
+  |C A B . . Q |
+  |. . B Z Z Z |
+  |D D B P L L |
+  |M M . P . . |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 932: M-kanan
+  +------------+
+  |C A U U . Q |
+  |C A B . . Q |
+  |. . B Z Z Z |
+  |D D B P L L |
+  |. M M P . . |
+  |. . . H H H |
+  +------K-----+
+
+
+Gerakan 933: H-kiri
+  +------------+
+  |C A U U . Q |
+  |C A B . . Q |
+  |. . B Z Z Z |
+  |D D B P L L |
+  |. M M P . . |
+  |H H H . . . |
+  +------K-----+
+
+
+Gerakan 934: P-bawah
+  +------------+
+  |C A U U . Q |
+  |C A B . . Q |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. M M P . . |
+  |H H H P . . |
+  +------K-----+
+
+
+Papan Akhir:
+  +------------+
+  |C A U U . Q |
+  |C A B . . Q |
+  |. . B Z Z Z |
+  |D D B . L L |
+  |. M M . . . |
+  |H H H . . . |
+  +------K-----+
+
+

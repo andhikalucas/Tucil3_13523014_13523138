@@ -1,0 +1,70 @@
+Rush Hour Solution
+Algorithm: A*
+Heuristic: Jarak ke pintu keluar
+
+Papan Awal:
+  +--K---------+
+  |A A B . . F |
+  |. P B C D F |
+  |G P . C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 1: B-bawah
+  +--K---------+
+  |A A . . . F |
+  |. P B C D F |
+  |G P B C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 2: A-kanan
+  +--K---------+
+  |. A A . . F |
+  |. P B C D F |
+  |G P B C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 3: A-kanan
+  +--K---------+
+  |. . A A . F |
+  |. P B C D F |
+  |G P B C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 4: P-atas
+  +--K---------+
+  |. P A A . F |
+  |. P B C D F |
+  |G . B C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Papan Akhir:
+  +--K---------+
+  |. . A A . F |
+  |. . B C D F |
+  |G . B C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+

@@ -1,0 +1,80 @@
+Rush Hour Solution
+Algorithm: UCS
+
+Papan Awal:
+  +------------+
+  |A A B . . F |
+  |. . B C D F |
+  |G P P C D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 1: C-atas
+  +------------+
+  |A A B C . F |
+  |. . B C D F |
+  |G P P . D F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 2: D-atas
+  +------------+
+  |A A B C D F |
+  |. . B C D F |
+  |G P P . . F K
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 3: I-kiri
+  +------------+
+  |A A B C D F |
+  |. . B C D F |
+  |G P P . . F K
+  |G H I I I . |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 4: F-bawah
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G P P . . F K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 5: F-bawah
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G P P . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+
+Papan Akhir:
+  +------------+
+  |A A B C D . |
+  |. . B C D . |
+  |G . . . . . K
+  |G H I I I F |
+  |G H J . . F |
+  |L L J M M F |
+  +------------+
+
+

@@ -1,0 +1,136 @@
+Rush Hour Solution
+Algorithm: Greedy
+Heuristic: Jumlah kendaraan yang menghalangi
+
+Papan Awal:
+  +--K---------+
+  |A A B . . F |
+  |. P B C D F |
+  |G P . C D F |
+  |G H . I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 1: B-bawah
+  +--K---------+
+  |A A . . . F |
+  |. P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 2: G-atas
+  +--K---------+
+  |A A . . . F |
+  |G P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 3: A-kanan
+  +--K---------+
+  |. A A . . F |
+  |G P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 4: G-atas
+  +--K---------+
+  |G A A . . F |
+  |G P . C D F |
+  |G P B C D F |
+  |. H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 5: M-kanan
+  +--K---------+
+  |G A A . . F |
+  |G P . C D F |
+  |G P B C D F |
+  |. H B I I I |
+  |. H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 6: A-kanan
+  +--K---------+
+  |G . . A A F |
+  |G P . C D F |
+  |G P B C D F |
+  |. H B I I I |
+  |. H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 7: G-bawah
+  +--K---------+
+  |. . . A A F |
+  |. P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |G H J . . . |
+  |L L J . M M |
+  +------------+
+
+
+Gerakan 8: M-kiri
+  +--K---------+
+  |. . . A A F |
+  |. P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |G H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 9: G-atas
+  +--K---------+
+  |. . . A A F |
+  |G P . C D F |
+  |G P B C D F |
+  |G H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Gerakan 10: P-atas
+  +--K---------+
+  |. P . A A F |
+  |G P . C D F |
+  |G . B C D F |
+  |G H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
+Papan Akhir:
+  +--K---------+
+  |. . . A A F |
+  |G . . C D F |
+  |G . B C D F |
+  |G H B I I I |
+  |. H J . . . |
+  |L L J M M . |
+  +------------+
+
+
