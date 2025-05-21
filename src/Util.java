@@ -24,15 +24,26 @@ public class Util implements Style{
                     int end = j;
                     while (end + 1 < cols && grid[ex][end + 1] == 'P') end++;
 
+                    // Cek arah ke exit (kiri atau kanan)
+                    // Exit di kiri
+                    if (ey == -1){
+                        // Pastikan semua cell antara K dan P kosong
+                        for (int k = 0; k < j; k++) {
+                            if (grid[ex][k] != '.') return false;
+                        }
+                        return true;
+                    }
+                        
+                    // Exit di kanan (ey >= cols)
                     // Pastikan semua cell antara P dan K kosong
                     for (int k = end + 1; k < ey; k++) {
                         if (k < cols && grid[ex][k] != '.') return false;
                     }
-
                     // Akhirnya, cek apakah pintu keluar ada tepat di ey
                     if (ey == end + 1 || ey > end) {
                         return true;
                     }
+                    
                 }
             }
         }
@@ -55,15 +66,14 @@ public class Util implements Style{
                         // P harus menempel di baris paling atas
                         if (i == 0) return true;
 
-                    // Exit di bawah
-                    } else if (ex >= rows) { 
-                        // Pastikan semua cell di bawah P kosong
-                        for (int k = end + 1; k < rows; k++) {
-                            if (grid[k][ey] != '.') return false;
-                        }
-                        // P harus menempel di baris paling bawah
-                        if (end == rows - 1) return true;
+                    }  
+                    // Exit di bawah (// ex >= rows )
+                    // Pastikan semua cell di bawah P kosong
+                    for (int k = end + 1; k < rows; k++) {
+                        if (grid[k][ey] != '.') return false;
                     }
+                    // P harus menempel di baris paling bawah
+                    if (end == rows - 1) return true;
                 }
             }
         }
@@ -164,7 +174,7 @@ public class Util implements Style{
         for (int i = 0; i < board.rows; i++) {
             // Border kiri
             if (board.exitCol == -1 && board.exitRow == i) {
-                System.out.print(GREEN + "K" + RESET + " |");
+                System.out.print(GREEN + "  K" + RESET);
             } else {
                 System.out.print("  |");
             }
